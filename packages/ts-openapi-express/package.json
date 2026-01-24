@@ -7,6 +7,10 @@
     "directories": {
         "test": "test"
     },
+    "repository": {
+        "url": "https://github.com/jacobshirley/ts-openapi-express"
+    },
+    "homepage": "https://jacobshirley.github.io/ts-openapi-express/v1",
     "keywords": [
         "openapi",
         "express",
