@@ -1,6 +1,6 @@
 {
     "name": "blog-api-example",
-    "version": "2.0.3",
+    "version": "1.0.0",
     "type": "module",
     "private": true,
     "description": "Blog API example using ts-openapi-express",
@@ -10,7 +10,7 @@
         "start": "tsx src/server.ts"
     },
     "dependencies": {
-        "ts-openapi-express": "1.0.3"
+        "ts-openapi-express": "workspace:^1.0.2"
     },
     "devDependencies": {
         "openapi-typescript": "^7.4.1",
