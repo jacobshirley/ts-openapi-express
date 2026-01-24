@@ -46,7 +46,7 @@ function openapiExpress<Spec>(options: {
         app.use(json())
     }
 
-    if (validateRequest || validateResponse)
+    if (validateRequest || validateResponse) {
         app.use(
             ...requestResponseValidatorMiddleware({
                 spec,
@@ -56,6 +56,7 @@ function openapiExpress<Spec>(options: {
                 },
             }),
         )
+    }
 
     for (const m of middleware) {
         app.use(m)

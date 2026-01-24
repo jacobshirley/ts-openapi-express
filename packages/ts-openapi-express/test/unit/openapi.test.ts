@@ -1,4 +1,8 @@
-import { openapiRoutes, openapiExpress } from '../../src/index.js'
+import {
+    openapiRoutes,
+    openapiExpress,
+    OpenapiValidationErrors,
+} from '../../src/index.js'
 import { expect, describe, it } from 'vitest'
 import request from 'supertest'
 import { paths } from './test-schema.gen.js'
@@ -465,5 +469,46 @@ describe('openapi-express', () => {
             .expect(203)
 
         expect(text).to.equal('Test error')
+    })
+
+    it('should be able to recognise openapi validation errors', async () => {
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            errorMiddleware: [
+                (err, req, res, next) => {
+                    if (
+                        err instanceof
+                        OpenapiValidationErrors.UnsupportedMediaType
+                    ) {
+                        res.status(415).send('Found: Unsupported Media Type')
+                    }
+                },
+            ],
+            //@ts-expect-error
+            routes: {
+                '/testPost': {
+                    post: {
+                        handler(req) {
+                            return {
+                                200: {
+                                    headers: {},
+                                    body: {
+                                        allowedProperty: req.body.testString,
+                                    },
+                                },
+                            }
+                        },
+                    },
+                },
+            },
+        })
+
+        const { status, text } = await request(app)
+            .post('/testPost')
+            .set('Content-Type', 'application/xml')
+            .send('<test>123</test>')
+
+        expect(status, text).to.equal(415)
+        expect(text).to.equal('Found: Unsupported Media Type')
     })
 })
