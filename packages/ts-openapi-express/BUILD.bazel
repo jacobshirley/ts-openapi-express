@@ -1,0 +1,9 @@
+load("//tools/bazel:defs.bzl", "devex_ts_module")
+
+devex_ts_module(
+    name = "openapi-express",
+    module_name = "@devex/openapi-express",
+    deps = [
+        ":node_modules",
+    ],
+)

@@ -1,0 +1,244 @@
+openapi: '3.0.3'
+info:
+  title: Devex Test API
+  version: '1.0'
+  contact:
+    email: jake.shirley@devex.com
+  description: Test API
+servers:
+  - url: /
+paths:
+  /testQueryParams:
+    get:
+      operationId: testQueryParams
+      summary: Test query parameters. These should be type-safe when the schema is generated
+      parameters:
+        - in: query
+          name: id
+          description: ID parameter
+          schema:
+            $ref: 'ref.yaml'
+          required: true
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+  /testApiCall:
+    get:
+      operationId: test
+      summary: Get Devex data
+      responses:
+        200:
+          description: Successfully retrieved data
+          content:
+            text/csv:
+              schema:
+                type: string
+  /testPathParameters/{param1}/{param2}:
+    get:
+      operationId: retrieveData
+      summary: Get Devex data
+      parameters:
+        - in: path
+          name: param1
+          description: param1 parameter
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: param2
+          description: param2 parameter
+          schema:
+            type: boolean
+          required: true
+      responses:
+        200:
+          description: Successfully retrieved data
+          headers:
+            X-Defined-Header:
+              description: Defined header
+              schema:
+                type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+  /testPost:
+    post:
+      operationId: postData2
+      summary: Test post
+      requestBody:
+        description: Example body
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - testBoolean
+              properties:
+                testBoolean:
+                  type: boolean
+                testString:
+                  type: string
+      responses:
+        200:
+          description: Respond with something
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedProperty:
+                    type: string
+        201:
+          description: Respond with something else
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedProperty2:
+                    type: string
+  /:
+    post:
+      operationId: postData
+      summary: Test post
+      requestBody:
+        description: Example body
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - testBoolean
+              properties:
+                testBoolean:
+                  type: boolean
+                testString:
+                  type: string
+      responses:
+        200:
+          description: Respond with something
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedProperty:
+                    type: string
+  /testRequestHeaders:
+    post:
+      operationId: testRequestHeaders
+      summary: Test post
+      parameters:
+        - in: header
+          name: x-test-header
+          description: Test header
+          schema:
+            type: string
+            enum:
+              - test
+          required: true
+        - in: header
+          name: x-test-optional-header
+          description: Test optional header
+          schema:
+            type: string
+            enum:
+              - test2
+      requestBody:
+        description: Example body
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - testBoolean
+              properties:
+                testBoolean:
+                  type: boolean
+                testString:
+                  type: string
+      responses:
+        200:
+          description: Respond with something
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedProperty:
+                    type: string
+  /testCommonParameters/{commonParam}:
+    parameters:
+      - in: path
+        name: commonParam
+        description: Common parameter
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: commonQuery
+        description: Common query parameter
+        schema:
+          type: string
+        required: true
+    get:
+      operationId: testCommonParameters
+      summary: Test common parameters
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+  /testKeepLocalSchemas:
+    get:
+      operationId: testKeepLocalSchemas
+      summary: Test keep local schemas
+      requestBody:
+        description: Example body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestLocalSchema'
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+  /testArray:
+    get:
+      operationId: testArray
+      summary: Test array
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  schemas:
+    TestLocalSchema:
+      type: object
+      properties:
+        testProperty:
+          type: string
