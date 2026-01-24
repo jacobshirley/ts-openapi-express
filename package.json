@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "type": "module",
-    "description": "A lightweight PDF library for Node.js and the browser",
+    "description": "Type-safe Express.js integration for OpenAPI specifications with request/response validation",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
@@ -20,18 +20,18 @@
         "docs:gen:html": "./scripts/gen-html-docs.sh"
     },
     "keywords": [
-        "pdf",
+        "openapi",
+        "express",
         "typescript",
-        "browser",
-        "nodejs",
-        "zero-dependency",
+        "rest-api",
+        "api",
+        "validation",
         "type-safe",
-        "pdf-parser",
-        "pdf-reader",
-        "pdf-writer",
-        "digital-signature",
-        "encryption",
-        "decryption"
+        "schema-validation",
+        "openapi-typescript",
+        "request-validation",
+        "response-validation",
+        "nodejs"
     ],
     "author": "Jacob Shirley",
     "license": "MIT",

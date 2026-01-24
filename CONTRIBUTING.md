@@ -1,24 +1,6 @@
-# Contributing to PDF-Lite
+# Contributing to ts-openapi-express
 
-Thank you for contributing to PDF-Lite! This guide will help you understand the project structure and maintain consistency.
-
-## Project Structure
-
-```
-packages/ts-openapi-express/
-├── src/
-│   ├── core/       # PDF primitives (objects, parser, tokenizer, streams)
-│   ├── pdf/        # High-level PDF document handling
-│   ├── crypto/     # Encryption algorithms (RC4, AES)
-│   ├── security/   # Security handlers
-│   ├── signing/    # Digital signature support
-│   ├── filters/    # Compression filters (Flate, LZW, etc.)
-│   └── utils/      # Utility functions
-├── test/
-│   ├── unit/       # Unit tests
-│   └── acceptance/ # Acceptance tests
-examples/           # Numbered example scripts (001-create-pdf.ts, etc.)
-```
+Thank you for contributing! This guide will help you maintain consistency with the project.
 
 ## Development
 
@@ -31,7 +13,7 @@ pnpm install
 ### Commands
 
 ```bash
-pnpm test           # Run all tests
+pnpm test           # Run all tests (generates types + runs vitest)
 pnpm compile        # Compile TypeScript
 pnpm format         # Format code with Prettier
 ```
@@ -50,20 +32,17 @@ pnpm format         # Format code with Prettier
 This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```bash
-feat: add support for XYZ PDF feature
-fix: correct parsing of encrypted streams
-docs: update encryption examples
-test: add tests for compression algorithms
-refactor: simplify stream processing logic
+feat: add support for OpenAPI request validation
+fix: correct type inference for path parameters
 ```
 
-Other valid types: `ci`, `chore`, `bump`, `perf`, `security`, `release`, `revert`, `style`
+Valid types: `feat`, `fix`, `ci`, `chore`, `perf`, `docs`, `test`, `refactor`
 
 ## Code Standards
 
 ### File Naming
 
-Use kebab-case for all files: `pdf-dictionary.ts`, `pdf-stream.ts`
+Use kebab-case for all files: `openapi-routes.ts`, `validation-middleware.ts`
 
 ### Documentation
 
@@ -71,39 +50,36 @@ Use JSDoc comments for public APIs:
 
 ```typescript
 /**
- * Encrypts a PDF stream using the specified algorithm.
+ * Creates an Express application with OpenAPI validation.
  *
- * @param stream - The stream to encrypt
- * @param algorithm - The encryption algorithm to use
- * @returns The encrypted stream
+ * @param options - Configuration for the OpenAPI app
+ * @returns An Express app with OpenAPI integration
+ * @example
+ * const app = openapiExpress<paths>({
+ *   specPath: './openapi.yaml',
+ *   routes: myRoutes
+ * })
  */
-export function encryptStream(stream: PdfStream, algorithm: string): PdfStream {
+export function openapiExpress<Spec>(options: OpenapiExpressOptions<Spec>) {
     // Implementation
 }
 ```
 
 ### Testing
 
-Tests are located in `packages/ts-openapi-express/test/`:
+Tests use Vitest. When modifying OpenAPI specs, regenerate types:
 
-- `unit/` - Unit tests for individual components
-- `acceptance/` - Integration tests with real PDFs
-
-Use Vitest for testing:
-
-```typescript
-import { describe, it, expect } from 'vitest'
-
-describe('Component', () => {
-    it('should do something', () => {
-        expect(result).toBe(expected)
-    })
-})
+```bash
+npm run test:compile:spec  # Regenerates types from spec
+npm run test:unit          # Runs tests
 ```
 
-## Getting Help
+Test structure:
 
-- **Issues**: Open an issue for bugs or feature requests
-- **Examples**: Check the `examples/` folder for reference implementations
+- `test/unit/` - Unit tests
+- `test/unit/openapi.test.yaml` - Test OpenAPI spec
+- `test/unit/test-schema.ts` - Auto-generated types
 
-Thank you for contributing! 🎉
+## Questions?
+
+Open an issue for bugs or feature requests.
