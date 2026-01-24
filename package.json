@@ -1,6 +1,6 @@
 {
     "name": "ts-openapi-express-monorepo",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": true,
     "type": "module",
     "description": "Type-safe Express.js integration for OpenAPI specifications with request/response validation",

@@ -12,7 +12,7 @@
 
 ### error
 
-`any`
+`Error`
 
 ### request
 
