@@ -30,6 +30,10 @@
 
 `boolean`
 
+#### errorMiddleware?
+
+[`ExpressMiddlewareWithError`](../type-aliases/ExpressMiddlewareWithError.md)[]
+
 #### middleware?
 
 [`ExpressMiddleware`](../type-aliases/ExpressMiddleware.md)[]
