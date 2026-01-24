@@ -2,6 +2,7 @@
     "name": "blog-api-example",
     "version": "1.0.0",
     "type": "module",
+    "private": true,
     "description": "Blog API example using ts-openapi-express",
     "scripts": {
         "compile": "pnpm generate:types && tsc",
