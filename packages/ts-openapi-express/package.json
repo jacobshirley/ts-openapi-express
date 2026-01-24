@@ -11,8 +11,8 @@
         "test": "npm run test:unit",
         "test:unit": "npm run test:compile:spec && vitest run",
         "test:compile:spec": "openapi-typescript test/unit/openapi.test.yaml --output test/unit/test-schema.ts",
-        "compile": "tsc -p .",
-        "watch": "tsc -p . --watch"
+        "compile": "tsc -p tsconfig.prod.json",
+        "watch": "tsc -p tsconfig.prod.json --watch"
     },
     "author": "",
     "license": "ISC",
@@ -32,7 +32,7 @@
         "openapi-typescript": "^7.4.1",
         "supertest": "^7.0.0",
         "typescript": "^5.0.4",
-        "vitest": "^4.0.0-beta.13"
+        "vitest": "^4.0.18"
     },
     "files": [
         "dist"
