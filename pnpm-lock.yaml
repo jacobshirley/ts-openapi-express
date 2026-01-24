@@ -47,7 +47,7 @@ importers:
   examples/blog-api:
     dependencies:
       ts-openapi-express:
-        specifier: 1.0.0
+        specifier: 1.0.1
         version: link:../../packages/ts-openapi-express
     devDependencies:
       openapi-typescript:
