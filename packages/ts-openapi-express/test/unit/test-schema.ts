@@ -4,428 +4,428 @@
  */
 
 export interface paths {
-    "/testQueryParams": {
+    '/testQueryParams': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** Test query parameters. These should be type-safe when the schema is generated */
-        get: operations["testQueryParams"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testApiCall": {
+        get: operations['testQueryParams']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testApiCall': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** Get Devex data */
-        get: operations["test"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testPathParameters/{param1}/{param2}": {
+        get: operations['test']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testPathParameters/{param1}/{param2}': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** Get Devex data */
-        get: operations["retrieveData"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testPost": {
+        get: operations['retrieveData']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testPost': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         /** Test post */
-        post: operations["postData2"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/": {
+        post: operations['postData2']
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         /** Test post */
-        post: operations["postData"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testRequestHeaders": {
+        post: operations['postData']
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testRequestHeaders': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get?: never
+        put?: never
         /** Test post */
-        post: operations["testRequestHeaders"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testCommonParameters/{commonParam}": {
+        post: operations['testRequestHeaders']
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testCommonParameters/{commonParam}': {
         parameters: {
             query: {
                 /** @description Common query parameter */
-                commonQuery: string;
-            };
-            header?: never;
+                commonQuery: string
+            }
+            header?: never
             path: {
                 /** @description Common parameter */
-                commonParam: string;
-            };
-            cookie?: never;
-        };
+                commonParam: string
+            }
+            cookie?: never
+        }
         /** Test common parameters */
-        get: operations["testCommonParameters"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testKeepLocalSchemas": {
+        get: operations['testCommonParameters']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testKeepLocalSchemas': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** Test keep local schemas */
-        get: operations["testKeepLocalSchemas"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/testArray": {
+        get: operations['testKeepLocalSchemas']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/testArray': {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** Test array */
-        get: operations["testArray"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
+        get: operations['testArray']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
 }
-export type webhooks = Record<string, never>;
+export type webhooks = Record<string, never>
 export interface components {
     schemas: {
         TestLocalSchema: {
-            testProperty?: string;
-        };
+            testProperty?: string
+        }
         /** @enum {string} */
-        ref: "test1" | "test2";
-    };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+        ref: 'test1' | 'test2'
+    }
+    responses: never
+    parameters: never
+    requestBodies: never
+    headers: never
+    pathItems: never
 }
-export type $defs = Record<string, never>;
+export type $defs = Record<string, never>
 export interface operations {
     testQueryParams: {
         parameters: {
             query: {
                 /** @description ID parameter */
-                id: components["schemas"]["ref"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
+                id: components['schemas']['ref']
+            }
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        requestBody?: never
         responses: {
             /** @description Test */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": Record<string, never>;
-                };
-            };
-        };
-    };
+                    'application/json': Record<string, never>
+                }
+            }
+        }
+    }
     test: {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        requestBody?: never
         responses: {
             /** @description Successfully retrieved data */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "text/csv": string;
-                };
-            };
-        };
-    };
+                    'text/csv': string
+                }
+            }
+        }
+    }
     retrieveData: {
         parameters: {
-            query?: never;
-            header?: never;
+            query?: never
+            header?: never
             path: {
                 /** @description param1 parameter */
-                param1: string;
+                param1: string
                 /** @description param2 parameter */
-                param2: boolean;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
+                param2: boolean
+            }
+            cookie?: never
+        }
+        requestBody?: never
         responses: {
             /** @description Successfully retrieved data */
             200: {
                 headers: {
                     /** @description Defined header */
-                    "X-Defined-Header"?: string;
-                    [name: string]: unknown;
-                };
+                    'X-Defined-Header'?: string
+                    [name: string]: unknown
+                }
                 content: {
-                    "text/csv": string;
-                };
-            };
-        };
-    };
+                    'text/csv': string
+                }
+            }
+        }
+    }
     postData2: {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** @description Example body */
         requestBody: {
             content: {
-                "application/json": {
-                    testBoolean: boolean;
-                    testString?: string;
-                };
-            };
-        };
+                'application/json': {
+                    testBoolean: boolean
+                    testString?: string
+                }
+            }
+        }
         responses: {
             /** @description Respond with something */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": {
-                        allowedProperty?: string;
-                    };
-                };
-            };
+                    'application/json': {
+                        allowedProperty?: string
+                    }
+                }
+            }
             /** @description Respond with something else */
             201: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": {
-                        allowedProperty2?: string;
-                    };
-                };
-            };
-        };
-    };
+                    'application/json': {
+                        allowedProperty2?: string
+                    }
+                }
+            }
+        }
+    }
     postData: {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** @description Example body */
         requestBody: {
             content: {
-                "application/json": {
-                    testBoolean: boolean;
-                    testString?: string;
-                };
-            };
-        };
+                'application/json': {
+                    testBoolean: boolean
+                    testString?: string
+                }
+            }
+        }
         responses: {
             /** @description Respond with something */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": {
-                        allowedProperty?: string;
-                    };
-                };
-            };
-        };
-    };
+                    'application/json': {
+                        allowedProperty?: string
+                    }
+                }
+            }
+        }
+    }
     testRequestHeaders: {
         parameters: {
-            query?: never;
+            query?: never
             header: {
                 /** @description Test header */
-                "x-test-header": "test";
+                'x-test-header': 'test'
                 /** @description Test optional header */
-                "x-test-optional-header"?: "test2";
-            };
-            path?: never;
-            cookie?: never;
-        };
+                'x-test-optional-header'?: 'test2'
+            }
+            path?: never
+            cookie?: never
+        }
         /** @description Example body */
         requestBody: {
             content: {
-                "application/json": {
-                    testBoolean: boolean;
-                    testString?: string;
-                };
-            };
-        };
+                'application/json': {
+                    testBoolean: boolean
+                    testString?: string
+                }
+            }
+        }
         responses: {
             /** @description Respond with something */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": {
-                        allowedProperty?: string;
-                    };
-                };
-            };
-        };
-    };
+                    'application/json': {
+                        allowedProperty?: string
+                    }
+                }
+            }
+        }
+    }
     testCommonParameters: {
         parameters: {
             query: {
                 /** @description Common query parameter */
-                commonQuery: string;
-            };
-            header?: never;
+                commonQuery: string
+            }
+            header?: never
             path: {
                 /** @description Common parameter */
-                commonParam: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
+                commonParam: string
+            }
+            cookie?: never
+        }
+        requestBody?: never
         responses: {
             /** @description Test */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": Record<string, never>;
-                };
-            };
-        };
-    };
+                    'application/json': Record<string, never>
+                }
+            }
+        }
+    }
     testKeepLocalSchemas: {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
         /** @description Example body */
         requestBody: {
             content: {
-                "application/json": components["schemas"]["TestLocalSchema"];
-            };
-        };
+                'application/json': components['schemas']['TestLocalSchema']
+            }
+        }
         responses: {
             /** @description Test */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": Record<string, never>;
-                };
-            };
-        };
-    };
+                    'application/json': Record<string, never>
+                }
+            }
+        }
+    }
     testArray: {
         parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        requestBody?: never
         responses: {
             /** @description Test */
             200: {
                 headers: {
-                    [name: string]: unknown;
-                };
+                    [name: string]: unknown
+                }
                 content: {
-                    "application/json": string[];
-                };
-            };
-        };
-    };
+                    'application/json': string[]
+                }
+            }
+        }
+    }
 }

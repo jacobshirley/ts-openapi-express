@@ -127,7 +127,6 @@ type HeadersMap = {
     [x in `x-${string}` | `X-${string}` | StandardRequestHeader]?: string
 }
 
-
 export {
     StandardRequestHeader,
     StandardResponseHeader,
