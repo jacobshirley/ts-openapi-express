@@ -1,7 +1,7 @@
 {
     "name": "ts-openapi-express",
     "type": "module",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "",
     "main": "dist/index.js",
     "directories": {
@@ -49,6 +49,7 @@
         "vitest": "^4.0.18"
     },
     "files": [
-        "dist"
+        "dist",
+        "README.md"
     ]
 }
