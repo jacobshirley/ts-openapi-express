@@ -45,13 +45,3 @@
 ### status
 
 > `readonly` **status**: `number`
-
-## Methods
-
-### type()
-
-> **type**(): `string`
-
-#### Returns
-
-`string`

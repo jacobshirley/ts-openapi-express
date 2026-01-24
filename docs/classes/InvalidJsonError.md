@@ -45,17 +45,3 @@
 #### Inherited from
 
 [`HttpError`](HttpError.md).[`status`](HttpError.md#status)
-
-## Methods
-
-### type()
-
-> **type**(): `string`
-
-#### Returns
-
-`string`
-
-#### Inherited from
-
-[`HttpError`](HttpError.md).[`type`](HttpError.md#type)

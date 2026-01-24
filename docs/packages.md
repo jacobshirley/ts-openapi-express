@@ -21,13 +21,11 @@
 - [OpenapiRequest](type-aliases/OpenapiRequest.md)
 - [OpenapiResponse](type-aliases/OpenapiResponse.md)
 - [OpenapiSpec](type-aliases/OpenapiSpec.md)
-- [OpenapiValidatorError](type-aliases/OpenapiValidatorError.md)
 - [Route](type-aliases/Route.md)
 - [Routes](type-aliases/Routes.md)
 
 ## Functions
 
-- [isExpressOpenAPIValidatorError](functions/isExpressOpenAPIValidatorError.md)
 - [openapiExpress](functions/openapiExpress.md)
 - [openapiRoutes](functions/openapiRoutes.md)
 - [redirect](functions/redirect.md)
