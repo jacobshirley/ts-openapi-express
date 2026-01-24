@@ -26,19 +26,29 @@
         "nodejs"
     ],
     "scripts": {
-        "test": "pnpm test:unit",
-        "test:unit": "pnpm test:compile:spec && vitest run",
-        "test:compile:spec": "openapi-typescript test/unit/openapi.test.yaml --output test/unit/test-schema.ts",
+        "test": "vitest run",
+        "test:unit": "pnpm pretest && vitest run",
+        "pretest": "openapi-typescript test/unit/openapi.test.yaml --output test/unit/test-schema.gen.ts",
         "compile": "tsc -p tsconfig.prod.json",
         "watch": "tsc -p tsconfig.prod.json --watch"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^5.2.1",
-        "express-openapi-validator": "^5.6.2",
         "lodash-es": "^4.17.23",
-        "yaml": "^2.8.1"
+        "yaml": "^2.8.1",
+        "express-openapi-validator": "^5.0.0"
+    },
+    "peerDependencies": {
+        "express": "^5.0.0"
+    },
+    "peerDependenciesMeta": {
+        "express": {
+            "optional": false
+        },
+        "express-openapi-validator": {
+            "optional": false
+        }
     },
     "devDependencies": {
         "@types/express": "^5.0.6",

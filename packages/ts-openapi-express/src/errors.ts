@@ -1,24 +1,4 @@
-import { error as openapiValidatorErrors } from 'express-openapi-validator'
-
-export type OpenapiValidatorError =
-    (typeof openapiValidatorErrors)[keyof typeof openapiValidatorErrors]
-
-const isExpressOpenAPIValidatorError = (
-    err: any,
-): err is Error & {
-    status: number
-} => {
-    for (const key in openapiValidatorErrors) {
-        if (
-            err instanceof
-            openapiValidatorErrors[key as keyof typeof openapiValidatorErrors]
-        ) {
-            return true
-        }
-    }
-
-    return false
-}
+import { error as OpenapiValidationErrors } from 'express-openapi-validator'
 
 class HttpError extends Error {
     public readonly status: number
@@ -26,10 +6,6 @@ class HttpError extends Error {
     constructor(message: string, status: number) {
         super(message)
         this.status = status
-    }
-
-    type() {
-        return this.constructor.name
     }
 }
 
@@ -47,7 +23,6 @@ class RequestBodyTooLargeError extends HttpError {
         )
     }
 }
-
 class InvalidJsonError extends HttpError {
     public readonly jsonString: string
     constructor(jsonString: string) {
@@ -57,7 +32,7 @@ class InvalidJsonError extends HttpError {
 }
 
 export {
-    isExpressOpenAPIValidatorError,
+    OpenapiValidationErrors,
     HttpError,
     RequestBodyTooLargeError,
     InvalidJsonError,
