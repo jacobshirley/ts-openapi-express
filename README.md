@@ -1,3 +1,5 @@
+**[Examples](./examples/README.md)** | **[Documentation](https://jacobshirley.github.io/ts-openapi-express/v1)**
+
 # ts-openapi-express
 
 A lightweight, type-safe Express.js integration library for OpenAPI specifications. This package enables you to build type-safe REST APIs with full request/response validation using OpenAPI schemas.
