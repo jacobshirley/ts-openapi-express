@@ -13,6 +13,7 @@ on:
                     - preminor
                     - premajor
                     - prerelease
+                    - exact
                 required: true
             preid:
                 description: 'Prerelease identifier (e.g. alpha, beta, rc). Only used if version is a prerelease type'
