@@ -83,7 +83,7 @@ type ExpressMiddleware = (
 ) => void
 
 type ExpressMiddlewareWithError = (
-    error: any,
+    error: Error,
     request: ExpressRequest,
     response: ExpressResponse,
     next: NextFunction,

@@ -1,7 +1,7 @@
 import { openapiRoutes, openapiExpress } from '../../src/index.js'
 import { expect, describe, it } from 'vitest'
 import request from 'supertest'
-import { paths } from './test-schema.js'
+import { paths } from './test-schema.gen.js'
 
 const TEST_SPEC = `${__dirname}/openapi.test.yaml`
 
@@ -425,5 +425,45 @@ describe('openapi-express', () => {
         const { text } = await request(app).get('/testArray').send().expect(200)
 
         expect(text).to.equal(JSON.stringify(['1', '2', '3']))
+    })
+
+    it('should be able to handle errors thrown in handlers', async () => {
+        class CustomError extends Error {
+            statusCode: number
+            constructor(message: string, statusCode: number) {
+                super(message)
+                this.statusCode = statusCode
+            }
+        }
+
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            routes: {
+                //@ts-expect-error
+                '/testErrorHandling': {
+                    get: {
+                        handler() {
+                            throw new CustomError('Test error', 203)
+                        },
+                    },
+                },
+            },
+            errorMiddleware: [
+                (err, req, res, next) => {
+                    if (err instanceof CustomError) {
+                        res.status(err.statusCode).send(err.message)
+                    } else {
+                        res.status(500).send('Internal Server Error')
+                    }
+                },
+            ],
+        })
+
+        const { status, text } = await request(app)
+            .get('/testErrorHandling')
+            .send()
+            .expect(203)
+
+        expect(text).to.equal('Test error')
     })
 })

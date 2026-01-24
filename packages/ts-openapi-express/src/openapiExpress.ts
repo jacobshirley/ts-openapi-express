@@ -1,5 +1,10 @@
 import express, { Application } from 'express'
-import { ExpressMiddleware, OpenapiApplication, Routes } from './types.js'
+import {
+    ExpressMiddleware,
+    ExpressMiddlewareWithError,
+    OpenapiApplication,
+    Routes,
+} from './types.js'
 import { json } from './middleware/json.js'
 import { requestResponseValidatorMiddleware } from './middleware/validation.js'
 import { resolveFile } from './jsonPointer.js'
@@ -10,6 +15,7 @@ function openapiExpress<Spec>(options: {
     specPath: string
     routes: Routes<Spec>
     middleware?: ExpressMiddleware[]
+    errorMiddleware?: ExpressMiddlewareWithError[]
     validateRequest?: boolean
     validateResponse?: boolean
     decodeJsonBody?: boolean
@@ -24,6 +30,7 @@ function openapiExpress<Spec>(options: {
         validateRequest = true,
         validateResponse = true,
         middleware = [],
+        errorMiddleware = [],
     } = options
 
     const spec = resolveFile<OpenapiSpec>(specPath, { resolveLocalRefs: false })
@@ -55,6 +62,10 @@ function openapiExpress<Spec>(options: {
     }
 
     openapiRoutes(routes, app)
+
+    for (const em of errorMiddleware) {
+        app.use(em)
+    }
 
     return Object.assign(app, {
         version: spec.info.version,
