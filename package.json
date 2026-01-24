@@ -1,6 +1,6 @@
 {
     "name": "ts-openapi-express-monorepo",
-    "version": "1.0.6",
+    "version": "1.0.0",
     "private": true,
     "type": "module",
     "description": "A lightweight PDF library for Node.js and the browser",
@@ -73,8 +73,5 @@
         "typedoc": "^0.28.14",
         "typedoc-plugin-markdown": "^4.9.0",
         "typescript": "5.9.3"
-    },
-    "dependencies": {
-        "ts-openapi-express": "1.0.6"
     }
 }
