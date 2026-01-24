@@ -80,6 +80,8 @@ export interface paths {
 
 ```bash
 npm install ts-openapi-express
+yarn add ts-openapi-express
+pnpm add ts-openapi-express
 ```
 
 ### 3. Define Your Routes with Type Safety
