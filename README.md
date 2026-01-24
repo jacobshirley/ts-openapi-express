@@ -2,6 +2,9 @@
 
 A lightweight, type-safe Express.js integration library for OpenAPI specifications. This package enables you to build type-safe REST APIs with full request/response validation using OpenAPI schemas.
 
+[![npm version](https://img.shields.io/npm/v/ts-openapi-express.svg)](https://www.npmjs.com/package/ts-openapi-express)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Features
 
 - **Type-Safe Routes**: Leverage TypeScript to ensure your route handlers match your OpenAPI spec
@@ -12,6 +15,8 @@ A lightweight, type-safe Express.js integration library for OpenAPI specificatio
 - **Streaming Support**: Handle streaming responses with native Node.js streams
 
 ## Getting Started
+
+See [examples/](./examples/blog-api) for a complete working example.
 
 ### 1. Generate TypeScript Types from Your OpenAPI Spec
 
@@ -35,6 +40,16 @@ Then run it to generate the types:
 
 ```bash
 npm run generate:types
+```
+
+It's also recommended to add it to your `compile/build` script to ensure types are always up to date.
+
+```json
+{
+    "scripts": {
+        "build": "npm run generate:types && tsc"
+    }
+}
 ```
 
 This command generates a `types.ts` file with path types that look like:
@@ -113,6 +128,10 @@ app.listen(3000, () => {
     console.log('OpenAPI spec available at http://localhost:3000/openapi.json')
 })
 ```
+
+## Examples
+
+See the [examples/](./examples/) directory for complete working examples, including a simple blog API.
 
 ## API Options
 

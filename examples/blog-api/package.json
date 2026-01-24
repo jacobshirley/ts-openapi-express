@@ -1,0 +1,18 @@
+{
+    "name": "blog-api-example",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Blog API example using ts-openapi-express",
+    "scripts": {
+        "compile": "pnpm generate:types && tsc",
+        "generate:types": "npx openapi-typescript openapi.yaml --output src/openapi.types.ts",
+        "start": "tsx src/server.ts"
+    },
+    "dependencies": {
+        "ts-openapi-express": "workspace:*"
+    },
+    "devDependencies": {
+        "openapi-typescript": "^7.4.1",
+        "tsx": "^4.20.6"
+    }
+}
