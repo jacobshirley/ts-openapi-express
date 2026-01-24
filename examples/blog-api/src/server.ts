@@ -13,7 +13,7 @@
 import { openapiExpress } from '../../../packages/ts-openapi-express/src/index.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import type { paths, components } from './openapi.types.js'
+import type { paths, components } from './openapi.types.gen.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 

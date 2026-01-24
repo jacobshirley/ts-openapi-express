@@ -6,7 +6,7 @@
     "description": "Blog API example using ts-openapi-express",
     "scripts": {
         "compile": "pnpm generate:types && tsc",
-        "generate:types": "npx openapi-typescript openapi.yaml --output src/openapi.types.ts",
+        "generate:types": "npx openapi-typescript openapi.yaml --output src/openapi.types.gen.ts",
         "start": "tsx src/server.ts"
     },
     "dependencies": {
