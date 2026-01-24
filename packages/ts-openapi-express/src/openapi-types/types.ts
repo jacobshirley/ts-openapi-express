@@ -109,7 +109,7 @@ type GetResponseHeaders<
     ? T['responses'][Code]['headers']
     : never
 
-export {
+export type {
     HttpMethod,
     OpenapiSpec,
     GetJsonBody,

@@ -7,8 +7,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "compile": "pnpm -r run compile && pnpm compile:examples && pnpm compile:test",
-        "compile:examples": "tsx ./scripts/build-examples.ts && prettier --write EXAMPLES.md",
+        "compile": "pnpm -r run compile && pnpm compile:test",
         "compile:test": "tsc --noEmit",
         "prepublish": "pnpm -r run compile",
         "test": "pnpm -r --no-sort run test",

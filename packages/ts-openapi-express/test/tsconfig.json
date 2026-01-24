@@ -1,7 +1,0 @@
-{
-    "extends": "@devex/tsconfig",
-    "compilerOptions": {
-        "outDir": "dist"
-    },
-    "include": ["**/*"]
-}

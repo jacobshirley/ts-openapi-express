@@ -104,7 +104,7 @@ declare global {
     }
 }
 
-export {
+export type {
     OpenapiApplication,
     OpenapiRequest,
     OpenapiResponse,
