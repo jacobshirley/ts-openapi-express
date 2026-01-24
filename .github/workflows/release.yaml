@@ -36,7 +36,7 @@ jobs:
             - name: Compile
               run: pnpm compile
             - name: Publish packages
-              run: pnpm -r publish --tag=latest --provenance
+              run: pnpm --filter ./packages publish --tag=latest --provenance
             - name: Tag version
               run: |
                   git config --global user.name "github-actions[bot]"
@@ -51,7 +51,7 @@ jobs:
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Pack
-              run: pnpm -r pack
+              run: pnpm --filter ./packages pack
             - name: Push artifacts
               uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
               with:
