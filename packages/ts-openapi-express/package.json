@@ -10,6 +10,9 @@
     "repository": {
         "url": "https://github.com/jacobshirley/ts-openapi-express"
     },
+    "bugs": {
+        "url": "https://github.com/jacobshirley/ts-openapi-express/issues"
+    },
     "homepage": "https://jacobshirley.github.io/ts-openapi-express/v1",
     "keywords": [
         "openapi",
@@ -30,7 +33,8 @@
         "test:unit": "pnpm pretest && vitest run",
         "pretest": "openapi-typescript test/unit/openapi.test.yaml --output test/unit/test-schema.gen.ts",
         "compile": "tsc -p tsconfig.prod.json",
-        "watch": "tsc -p tsconfig.prod.json --watch"
+        "watch": "tsc -p tsconfig.prod.json --watch",
+        "prepack": "cp ../../README.md ."
     },
     "author": "",
     "license": "ISC",
