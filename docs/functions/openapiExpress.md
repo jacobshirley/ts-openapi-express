@@ -34,6 +34,10 @@
 
 [`ExpressMiddlewareWithError`](../type-aliases/ExpressMiddlewareWithError.md)[]
 
+#### handleHttpErrors?
+
+`boolean`
+
 #### middleware?
 
 [`ExpressMiddleware`](../type-aliases/ExpressMiddleware.md)[]
