@@ -10,7 +10,7 @@
  * 4. View the OpenAPI spec at http://localhost:3000/openapi.json
  */
 
-import { openapiExpress } from '../../../packages/ts-openapi-express/src/index.js'
+import { openapiExpress } from 'ts-openapi-express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import type { paths, components } from './openapi.types.gen.js'
@@ -63,8 +63,7 @@ const app = openapiExpress<paths>({
             },
             post: {
                 handler: async (req) => {
-                    const body =
-                        req.body as components['schemas']['CreatePostRequest']
+                    const body = req.body
                     const newPost: StoredPost = {
                         id: String(Date.now()),
                         title: body.title,
@@ -110,8 +109,7 @@ const app = openapiExpress<paths>({
             put: {
                 handler: async (req) => {
                     const postId = req.params.postId
-                    const body =
-                        req.body as components['schemas']['UpdatePostRequest']
+                    const body = req.body
 
                     const post = posts.find((p) => p.id === postId)
 
@@ -160,8 +158,7 @@ const app = openapiExpress<paths>({
             post: {
                 handler: async (req) => {
                     const postId = req.params.postId
-                    const body =
-                        req.body as components['schemas']['CreateCommentRequest']
+                    const body = req.body
 
                     // Verify post exists
                     const post = posts.find((p) => p.id === postId)
