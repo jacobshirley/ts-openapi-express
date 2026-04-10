@@ -2,6 +2,7 @@ import express, { Application } from 'express'
 import {
     ExpressMiddleware,
     ExpressMiddlewareWithError,
+    ExpressRequest,
     OpenapiApplication,
     Routes,
 } from './types.js'
@@ -10,6 +11,7 @@ import { requestResponseValidatorMiddleware } from './middleware/validation.js'
 import { resolveFile } from './jsonPointer.js'
 import { OpenapiSpec } from './openapi-types/index.js'
 import { openapiRoutes } from './openapiRoutes.js'
+import { HttpError } from './errors.js'
 
 function openapiExpress<Spec>(options: {
     specPath: string
@@ -21,6 +23,7 @@ function openapiExpress<Spec>(options: {
     decodeJsonBody?: boolean
     app?: Application
     disableXPoweredBy?: boolean
+    handleHttpErrors?: boolean
 }): OpenapiApplication<Spec> {
     const {
         specPath,
@@ -31,6 +34,7 @@ function openapiExpress<Spec>(options: {
         validateResponse = true,
         middleware = [],
         errorMiddleware = [],
+        handleHttpErrors = true,
     } = options
 
     const spec = resolveFile<OpenapiSpec>(specPath, { resolveLocalRefs: false })
@@ -65,7 +69,45 @@ function openapiExpress<Spec>(options: {
     openapiRoutes(routes, app)
 
     for (const em of errorMiddleware) {
-        app.use(em)
+        app.use(
+            async (
+                err: Error,
+                req: express.Request,
+                res: express.Response,
+                next: express.NextFunction,
+            ) => {
+                try {
+                    return await em(err, req, res, next)
+                } catch (error) {
+                    next(error)
+                }
+            },
+        )
+    }
+
+    if (handleHttpErrors) {
+        app.use(
+            (
+                err: Error,
+                _: express.Request,
+                res: express.Response,
+                next: express.NextFunction,
+            ) => {
+                if (err instanceof HttpError) {
+                    const status = err.status
+                    const message = err.message || 'Error'
+
+                    res.status(status).json({
+                        error: {
+                            message,
+                            status,
+                        },
+                    })
+                } else {
+                    next(err)
+                }
+            },
+        )
     }
 
     return Object.assign(app, {
