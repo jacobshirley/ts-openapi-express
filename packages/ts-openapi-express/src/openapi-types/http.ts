@@ -1,5 +1,3 @@
-type AllKeys<T> = T extends any ? keyof T : never
-
 interface IncomingHttpHeaders {
     accept?: string | undefined
     'accept-language'?: string | undefined

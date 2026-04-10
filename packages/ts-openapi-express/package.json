@@ -44,13 +44,11 @@
         "express-openapi-validator": "^5.0.0"
     },
     "peerDependencies": {
-        "express": "^5.0.0"
+        "@types/express": "^5",
+        "express": "^5"
     },
     "peerDependenciesMeta": {
         "express": {
-            "optional": false
-        },
-        "express-openapi-validator": {
             "optional": false
         }
     },
