@@ -61,7 +61,7 @@
         "openapi-types": "^12.1.0",
         "openapi-typescript": "^7.4.1",
         "supertest": "^7.0.0",
-        "typescript": "^5.0.4",
+        "typescript": "^6.0.2",
         "vitest": "^4.0.18"
     },
     "files": [
