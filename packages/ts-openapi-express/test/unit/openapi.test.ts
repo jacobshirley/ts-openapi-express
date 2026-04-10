@@ -2,6 +2,8 @@ import {
     openapiRoutes,
     openapiExpress,
     OpenapiValidationErrors,
+    HttpError,
+    UnauthorizedError,
 } from '../../src/index.js'
 import { expect, describe, it } from 'vitest'
 import request from 'supertest'
@@ -510,5 +512,141 @@ describe('openapi-express', () => {
 
         expect(status, text).to.equal(415)
         expect(text).to.equal('Found: Unsupported Media Type')
+    })
+
+    it('should return a JSON error response when an HttpError is thrown and handleHttpErrors is enabled', async () => {
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            routes: {
+                //@ts-expect-error
+                '/testErrorHandling': {
+                    get: {
+                        handler() {
+                            throw new UnauthorizedError()
+                        },
+                    },
+                },
+            },
+            validateRequest: false,
+            validateResponse: false,
+            handleHttpErrors: true,
+        })
+
+        const { status, body } = await request(app)
+            .get('/testErrorHandling')
+            .send()
+
+        expect(status).to.equal(401)
+        expect(body).to.deep.equal({
+            error: {
+                message: 'Unauthorized',
+                status: 401,
+            },
+        })
+    })
+
+    it('should return a JSON error response for a custom HttpError', async () => {
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            routes: {
+                //@ts-expect-error
+                '/testErrorHandling': {
+                    get: {
+                        handler() {
+                            throw new HttpError('Not Found', 404)
+                        },
+                    },
+                },
+            },
+            validateRequest: false,
+            validateResponse: false,
+            handleHttpErrors: true,
+        })
+
+        const { status, body } = await request(app)
+            .get('/testErrorHandling')
+            .send()
+
+        expect(status).to.equal(404)
+        expect(body).to.deep.equal({
+            error: {
+                message: 'Not Found',
+                status: 404,
+            },
+        })
+    })
+
+    it('should not handle HttpErrors when handleHttpErrors is disabled', async () => {
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            routes: {
+                //@ts-expect-error
+                '/testErrorHandling': {
+                    get: {
+                        handler() {
+                            throw new HttpError('Not Found', 404)
+                        },
+                    },
+                },
+            },
+            validateRequest: false,
+            validateResponse: false,
+            handleHttpErrors: false,
+        })
+
+        app.use(
+            (
+                err: Error,
+                _req: import('express').Request,
+                res: import('express').Response,
+                _next: import('express').NextFunction,
+            ) => {
+                res.status(418).send('Caught outside')
+            },
+        )
+
+        const { status, text } = await request(app)
+            .get('/testErrorHandling')
+            .send()
+
+        expect(status).to.equal(418)
+        expect(text).to.equal('Caught outside')
+    })
+
+    it('should pass non-HttpError errors to the next error handler', async () => {
+        const app = openapiExpress<paths>({
+            specPath: TEST_SPEC,
+            routes: {
+                //@ts-expect-error
+                '/testErrorHandling': {
+                    get: {
+                        handler() {
+                            throw new Error('Some other error')
+                        },
+                    },
+                },
+            },
+            validateRequest: false,
+            validateResponse: false,
+            handleHttpErrors: true,
+        })
+
+        app.use(
+            (
+                err: Error,
+                _req: import('express').Request,
+                res: import('express').Response,
+                _next: import('express').NextFunction,
+            ) => {
+                res.status(503).send('Caught by fallback')
+            },
+        )
+
+        const { status, text } = await request(app)
+            .get('/testErrorHandling')
+            .send()
+
+        expect(status).to.equal(503)
+        expect(text).to.equal('Caught by fallback')
     })
 })
