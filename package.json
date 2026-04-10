@@ -43,7 +43,7 @@
         "url": "https://github.com/jacobshirley/ts-openapi-express/issues"
     },
     "homepage": "https://jacobshirley.github.io/ts-openapi-express",
-    "packageManager": "pnpm@10.28.1",
+    "packageManager": "pnpm@10.33.0",
     "lint-staged": {
         "*.{js,ts,json,md}": "pnpm format"
     },
