@@ -37,7 +37,7 @@
         "prepack": "cp ../../README.md ."
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "lodash-es": "^4.17.23",
         "yaml": "^2.8.1",
