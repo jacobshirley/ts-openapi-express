@@ -43,21 +43,9 @@
         "url": "https://github.com/jacobshirley/ts-openapi-express/issues"
     },
     "homepage": "https://jacobshirley.github.io/ts-openapi-express",
-    "packageManager": "pnpm@10.33.2",
+    "packageManager": "pnpm@11.17.0",
     "lint-staged": {
         "*.{js,ts,json,md}": "pnpm format"
-    },
-    "pnpm": {
-        "overrides": {
-            "typescript": "$typescript"
-        },
-        "packageExtensions": {
-            "@vitest/browser": {
-                "peerDependencies": {
-                    "@vitest/runner": "*"
-                }
-            }
-        }
     },
     "devDependencies": {
         "@commitlint/cli": "^21.0.0",
