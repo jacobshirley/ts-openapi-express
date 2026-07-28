@@ -1,3 +1,14 @@
 packages:
-    - 'packages/*'
-    - 'examples/*'
+  - 'packages/*'
+  - 'examples/*'
+
+overrides:
+  typescript: $typescript
+
+packageExtensions:
+  '@vitest/browser':
+    peerDependencies:
+      '@vitest/runner': '*'
+
+allowBuilds:
+  esbuild: true
