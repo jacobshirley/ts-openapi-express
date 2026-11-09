@@ -12,3 +12,6 @@ packageExtensions:
 
 allowBuilds:
   esbuild: true
+
+linkWorkspacePackages: true
+preferWorkspacePackages: true
